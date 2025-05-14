@@ -20,10 +20,10 @@ public class UserEntrypoint {
         this.controller = controller;
     }
 
-    @Operation(summary = "Cria um novo usuário")
+    @Operation(summary = "Create new user")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Usuário criado com sucesso"),
-            @ApiResponse(responseCode = "400", description = "Requisição inválida")
+            @ApiResponse(responseCode = "201", description = "User created"),
+            @ApiResponse(responseCode = "400", description = "Invalid")
     })
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -31,10 +31,10 @@ public class UserEntrypoint {
         return controller.create(request);
     }
 
-    @Operation(summary = "Busca um usuário por ID")
+    @Operation(summary = "Search for userId")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Usuário encontrado"),
-            @ApiResponse(responseCode = "404", description = "Usuário não encontrado")
+            @ApiResponse(responseCode = "200", description = "User found"),
+            @ApiResponse(responseCode = "404", description = "User not found")
     })
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")

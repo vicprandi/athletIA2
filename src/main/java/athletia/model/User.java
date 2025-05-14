@@ -11,9 +11,17 @@ import java.time.Instant;
 @Document(collection = "users")
 public record User(
 
-        @Id String id,
+        @Id
+        String id,
+
         String name,
-        @Indexed(unique = true) String email,
+
+        String username,
+
+        @Indexed(unique = true)
+        String email,
+
         String password,
+
         Instant createdAt
 ) {}

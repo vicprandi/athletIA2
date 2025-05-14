@@ -6,8 +6,14 @@ import java.time.Instant;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record UserResponse(
+
         String id,
+
         String name,
+
+        String username,
+
         String email,
+
         Instant createdAt) {}
 
