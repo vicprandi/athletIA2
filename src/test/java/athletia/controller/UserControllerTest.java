@@ -2,6 +2,8 @@ package athletia.controller;
 
 import athletia.config.security.authentication.JwtService;
 import athletia.entrypoint.UserEntrypoint;
+import athletia.model.Gender;
+import athletia.model.TrainingLevel;
 import athletia.model.request.UserRequest;
 import athletia.model.response.UserResponse;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,6 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Instant;
+import java.time.LocalDate;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -45,19 +48,29 @@ class UserControllerTest {
     @BeforeEach
     void setUp() {
         validUserJson = """
-            {
-              "name": "John Doe",
-              "username": "johndoe",
-              "email": "john.doe@example.com",
-              "password": "password123"
-            }
-            """;
+        {
+          "name": "John Doe",
+          "username": "johndoe",
+          "email": "john.doe@example.com",
+          "password": "password123",
+          "height": 1.80,
+          "weight": 82.5,
+          "birthDate": "1995-06-15",
+          "gender": "MALE",
+          "level": "INTERMEDIATE"
+        }
+        """;
 
         expectedResponse = new UserResponse(
                 "1",
                 "John Doe",
                 "johndoe",
                 "john.doe@example.com",
+                1.80,
+                82.5,
+                LocalDate.of(1995, 6, 15),
+                Gender.MALE,
+                TrainingLevel.INTERMEDIATE,
                 Instant.parse("2025-05-14T00:00:00Z")
         );
 
