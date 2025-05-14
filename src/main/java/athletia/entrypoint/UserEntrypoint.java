@@ -1,6 +1,7 @@
 package athletia.entrypoint;
 
 import athletia.controller.UserController;
+import athletia.model.request.UserProfileUpdateRequest;
 import athletia.model.request.UserRequest;
 import athletia.model.response.UserResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -18,17 +19,6 @@ public class UserEntrypoint {
 
     public UserEntrypoint(UserController controller) {
         this.controller = controller;
-    }
-
-    @Operation(summary = "Create new user")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "User created"),
-            @ApiResponse(responseCode = "400", description = "Invalid")
-    })
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping
-    public UserResponse create(@Valid @RequestBody UserRequest request){
-        return controller.create(request);
     }
 
     @Operation(summary = "Search for userId")
@@ -52,7 +42,7 @@ public class UserEntrypoint {
     @Operation(summary = "Update profile of authenticated user")
     @PutMapping("/me")
     @ResponseStatus(HttpStatus.OK)
-    public UserResponse updateMyProfile(@Valid @RequestBody UserRequest request) {
+    public UserResponse updateMyProfile(@Valid @RequestBody UserProfileUpdateRequest request) {
         return controller.updateAuthenticatedUserProfile(request);
     }
 }

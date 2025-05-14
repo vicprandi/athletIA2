@@ -7,6 +7,7 @@ import athletia.model.request.SignupRequest;
 import athletia.repository.UserRepository;
 import athletia.config.security.authentication.AuthService;
 import athletia.config.security.authentication.JwtService;
+import athletia.validations.UserValidations;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +18,13 @@ public class AuthServiceImpl implements AuthService {
 
     private final UserRepository repository;
     private final JwtService jwtService;
+    private final UserValidations validations;
     private final PasswordEncoder passwordEncoder;
 
-    public AuthServiceImpl(UserRepository repository, JwtService jwtService, PasswordEncoder passwordEncoder) {
+    public AuthServiceImpl(UserRepository repository, JwtService jwtService, UserValidations validations, PasswordEncoder passwordEncoder) {
         this.repository = repository;
         this.jwtService = jwtService;
+        this.validations = validations;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -40,9 +43,8 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public void signup(SignupRequest request) {
-        if (repository.existsByEmail(request.email())) {
-            throw new IllegalArgumentException("Email já está em uso.");
-        }
+        validations.validateEmailAndUsernameUniqueness(request.email(), request.username());
+        validations.validatePassword(request.password());
 
         User user = User.builder()
                 .name(request.name())

@@ -45,6 +45,4 @@ public class UserValidations {
             throw new IllegalArgumentException("Username already in use by another user.");
         }
     }
-
-
 }
