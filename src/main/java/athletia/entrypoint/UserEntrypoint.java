@@ -38,7 +38,7 @@ public class UserEntrypoint {
     })
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{userId}")
-    public UserResponse findById(@Valid @RequestParam String userId){
+    public UserResponse findById(@Valid @PathVariable(name = "userId")  String userId){
         return controller.findById(userId);
     }
 }
