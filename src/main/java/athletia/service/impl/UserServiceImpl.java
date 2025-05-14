@@ -52,8 +52,7 @@ public class UserServiceImpl implements UserService {
         User user = repository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        User updated = User.builder()
-                .id(user.id())
+        User updated = user.toBuilder()
                 .height(request.height())
                 .weight(request.weight())
                 .birthDate(request.birthDate())

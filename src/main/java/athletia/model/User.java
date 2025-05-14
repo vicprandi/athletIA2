@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.Instant;
 import java.time.LocalDate;
 
-@Builder
+@Builder(toBuilder = true)
 @Document(collection = "users")
 public record User(
 
