@@ -30,7 +30,4 @@ public class UserController {
     public UserResponse updateAuthenticatedUserProfile(UserRequest request) {
         return service.updateAuthenticatedUser(request);
     }
-
-
-
 }

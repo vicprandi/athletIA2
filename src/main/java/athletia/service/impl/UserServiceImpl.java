@@ -50,7 +50,6 @@ public class UserServiceImpl implements UserService {
                 .createdAt(Instant.now())
                 .build();
 
-
         User saved = repository.save(user);
         return  mapper.map(saved, UserResponse.class);
     }

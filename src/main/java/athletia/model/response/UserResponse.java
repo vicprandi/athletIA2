@@ -1,7 +1,7 @@
 package athletia.model.response;
 
-import athletia.model.Gender;
-import athletia.model.TrainingLevel;
+import athletia.util.Gender;
+import athletia.util.TrainingLevel;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.Instant;

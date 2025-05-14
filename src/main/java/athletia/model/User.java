@@ -1,5 +1,7 @@
 package athletia.model;
 
+import athletia.util.Gender;
+import athletia.util.TrainingLevel;
 import lombok.Builder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;

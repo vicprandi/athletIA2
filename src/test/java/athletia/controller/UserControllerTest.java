@@ -2,8 +2,8 @@ package athletia.controller;
 
 import athletia.config.security.authentication.JwtService;
 import athletia.entrypoint.UserEntrypoint;
-import athletia.model.Gender;
-import athletia.model.TrainingLevel;
+import athletia.util.Gender;
+import athletia.util.TrainingLevel;
 import athletia.model.request.UserRequest;
 import athletia.model.response.UserResponse;
 import org.junit.jupiter.api.BeforeEach;
