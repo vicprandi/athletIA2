@@ -1,7 +1,7 @@
 package athletia.model.request;
 
-import athletia.model.Gender;
-import athletia.model.TrainingLevel;
+import athletia.util.Gender;
+import athletia.util.TrainingLevel;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

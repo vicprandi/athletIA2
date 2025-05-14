@@ -1,4 +1,4 @@
-package athletia.model;
+package athletia.util;
 
 public enum TrainingLevel {
     BEGINNER,

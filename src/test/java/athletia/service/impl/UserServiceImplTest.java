@@ -1,8 +1,8 @@
 package athletia.service.impl;
 
 import athletia.config.mapper.GenericMapper;
-import athletia.model.Gender;
-import athletia.model.TrainingLevel;
+import athletia.util.Gender;
+import athletia.util.TrainingLevel;
 import athletia.model.User;
 import athletia.model.request.UserRequest;
 import athletia.model.response.UserResponse;

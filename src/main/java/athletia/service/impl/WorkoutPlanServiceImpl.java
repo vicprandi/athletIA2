@@ -1,0 +1,53 @@
+package athletia.service.impl;
+
+import athletia.config.mapper.GenericMapper;
+import athletia.model.WorkoutPlan;
+import athletia.model.request.WorkoutPlanRequest;
+import athletia.model.response.WorkoutPlanResponse;
+import athletia.repository.WorkoutPlanRepository;
+import athletia.service.CurrentUserService;
+import athletia.service.WorkoutPlanService;
+import org.springframework.stereotype.Service;
+
+import java.time.Instant;
+import java.util.List;
+
+@Service
+public class WorkoutPlanServiceImpl implements WorkoutPlanService {
+
+    private final WorkoutPlanRepository repository;
+    private final GenericMapper mapper;
+    private final CurrentUserService currentUserService;
+
+    public WorkoutPlanServiceImpl(WorkoutPlanRepository repository, GenericMapper mapper, CurrentUserService currentUserService) {
+        this.repository = repository;
+        this.mapper = mapper;
+        this.currentUserService = currentUserService;
+    }
+
+    @Override
+    public WorkoutPlanResponse createWorkoutPlan(WorkoutPlanRequest request) {
+        String userId = currentUserService.getCurrentUserId();
+
+        WorkoutPlan plan = WorkoutPlan.builder()
+                .userId(userId)
+                .title(request.title())
+                .description(request.description())
+                .durationWeeks(request.durationWeeks())
+                .level(request.level())
+                .goal(request.goal())
+                .createdAt(Instant.now())
+                .build();
+
+        return mapper.map(repository.save(plan), WorkoutPlanResponse.class);
+    }
+
+    @Override
+    public List<WorkoutPlanResponse> getAllWorkoutPlansByUser() {
+        String userId = currentUserService.getCurrentUserId();
+
+        return repository.findAllByUserId(userId).stream()
+                .map(plan -> mapper.map(plan, WorkoutPlanResponse.class))
+                .toList();
+    }
+}
