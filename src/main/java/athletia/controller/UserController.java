@@ -1,5 +1,6 @@
 package athletia.controller;
 
+import athletia.model.request.UserProfileUpdateRequest;
 import athletia.model.request.UserRequest;
 import athletia.model.response.UserResponse;
 import athletia.service.UserService;
@@ -15,10 +16,6 @@ public class UserController {
         this.service = service;
     }
 
-    public UserResponse create(UserRequest request){
-        return service.createUser(request);
-    }
-
     public UserResponse findById(String userId){
         return service.getUserById(userId);
     }
@@ -27,7 +24,7 @@ public class UserController {
         return service.getAuthenticatedUser();
     }
 
-    public UserResponse updateAuthenticatedUserProfile(UserRequest request) {
+    public UserResponse updateAuthenticatedUserProfile(UserProfileUpdateRequest request) {
         return service.updateAuthenticatedUser(request);
     }
 }

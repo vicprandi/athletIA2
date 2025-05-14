@@ -2,10 +2,10 @@ package athletia.controller;
 
 import athletia.config.security.authentication.JwtService;
 import athletia.entrypoint.UserEntrypoint;
+import athletia.model.request.UserProfileUpdateRequest;
+import athletia.model.response.UserResponse;
 import athletia.util.Gender;
 import athletia.util.TrainingLevel;
-import athletia.model.request.UserRequest;
-import athletia.model.response.UserResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,7 +24,7 @@ import java.time.LocalDate;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -42,17 +42,13 @@ class UserControllerTest {
     @MockBean
     private UserController controller;
 
-    private String validUserJson;
+    private String updateProfileJson;
     private UserResponse expectedResponse;
 
     @BeforeEach
     void setUp() {
-        validUserJson = """
+        updateProfileJson = """
         {
-          "name": "John Doe",
-          "username": "johndoe",
-          "email": "john.doe@example.com",
-          "password": "password123",
           "height": 1.80,
           "weight": 82.5,
           "birthDate": "1995-06-15",
@@ -74,39 +70,44 @@ class UserControllerTest {
                 Instant.parse("2025-05-14T00:00:00Z")
         );
 
-        when(controller.create(any(UserRequest.class)))
+        when(controller.updateAuthenticatedUserProfile(any(UserProfileUpdateRequest.class)))
+                .thenReturn(expectedResponse);
+
+        when(controller.getAuthenticatedUserProfile())
                 .thenReturn(expectedResponse);
     }
 
     @Test
-    @DisplayName("POST /users – Criar usuário com dados válidos retorna 201 e payload correto")
-    void whenPostCreateUser_withValidInput_thenReturns201AndResponseBody() throws Exception {
-        mockMvc.perform(post("/users")
+    @DisplayName("PUT /users/me – Atualização de perfil com dados válidos retorna 200 e payload correto")
+    void whenPutUpdateProfile_withValidInput_thenReturns200AndResponse() throws Exception {
+        mockMvc.perform(put("/users/me")
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(validUserJson))
-                .andExpect(status().isCreated())
+                        .content(updateProfileJson))
+                .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id").value("1"))
-                .andExpect(jsonPath("$.name").value("John Doe"))
-                .andExpect(jsonPath("$.username").value("johndoe"))
-                .andExpect(jsonPath("$.email").value("john.doe@example.com"))
-                .andExpect(jsonPath("$.createdAt").value("2025-05-14T00:00:00Z"));
+                .andExpect(jsonPath("$.height").value(1.80))
+                .andExpect(jsonPath("$.weight").value(82.5))
+                .andExpect(jsonPath("$.birthDate").value("1995-06-15"))
+                .andExpect(jsonPath("$.gender").value("MALE"))
+                .andExpect(jsonPath("$.level").value("INTERMEDIATE"));
     }
 
     @Test
-    @DisplayName("POST /users – Payload inválido retorna 400 Bad Request")
-    void whenPostCreateUser_withInvalidInput_thenReturns400() throws Exception {
+    @DisplayName("PUT /users/me – Payload inválido retorna 400 Bad Request")
+    void whenPutUpdateProfile_withInvalidInput_thenReturns400() throws Exception {
         var invalidJson = """
-            {
-              "name": "",
-              "username": "johndoe",
-              "email": "not-an-email",
-              "password": ""
-            }
-            """;
+        {
+          "height": -10,
+          "weight": null,
+          "birthDate": "invalid-date",
+          "gender": null,
+          "level": null
+        }
+        """;
 
-        mockMvc.perform(post("/users")
+        mockMvc.perform(put("/users/me")
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(invalidJson))
@@ -114,30 +115,23 @@ class UserControllerTest {
     }
 
     @Test
-    @DisplayName("GET /users/{userId} – Usuário existente retorna 200 e payload correto")
-    void whenGetUserById_withExistingUser_thenReturns200AndResponseBody() throws Exception {
-        // Mock do findById
-        when(controller.findById("1"))
-                .thenReturn(expectedResponse);
-
-        mockMvc.perform(get("/users/{id}", "1"))
+    @DisplayName("GET /users/me – Retorna dados do usuário autenticado")
+    void whenGetMyProfile_thenReturns200() throws Exception {
+        mockMvc.perform(get("/users/me"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.id").value("1"))
-                .andExpect(jsonPath("$.name").value("John Doe"))
                 .andExpect(jsonPath("$.username").value("johndoe"))
-                .andExpect(jsonPath("$.email").value("john.doe@example.com"))
-                .andExpect(jsonPath("$.createdAt").value("2025-05-14T00:00:00Z"));
+                .andExpect(jsonPath("$.email").value("john.doe@example.com"));
     }
 
     @Test
-    @DisplayName("GET /users/{userId} – Usuário não existe retorna 500 Internal Server Error")
-    void whenGetUserById_withNonExistingUser_thenReturns500() throws Exception {
-        // O GlobalExceptionHandler converte essa exceção num 500
-        when(controller.findById("42"))
+    @DisplayName("GET /users/me – Quando usuário não encontrado, retorna 500 Internal Server Error")
+    void whenGetMyProfile_notFound_thenReturns500() throws Exception {
+        when(controller.getAuthenticatedUserProfile())
                 .thenThrow(new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        mockMvc.perform(get("/users/{id}", "42"))
+        mockMvc.perform(get("/users/me"))
                 .andExpect(status().isInternalServerError())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.error").value("Internal Server Error"))
