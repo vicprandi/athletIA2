@@ -37,8 +37,8 @@ public class UserEntrypoint {
             @ApiResponse(responseCode = "404", description = "User not found")
     })
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/{id}")
-    public UserResponse findById(@Valid @PathVariable String userId){
+    @GetMapping("/{userId}")
+    public UserResponse findById(@Valid @RequestParam String userId){
         return controller.findById(userId);
     }
 }
