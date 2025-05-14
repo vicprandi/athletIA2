@@ -1,4 +1,4 @@
-package com.athletia;
+package athletia;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;

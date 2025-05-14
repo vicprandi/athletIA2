@@ -1,9 +1,17 @@
-services:
-  mongodb:
-    image: 'mongo:latest'
-    environment:
-      - 'MONGO_INITDB_DATABASE=mydatabase'
-      - 'MONGO_INITDB_ROOT_PASSWORD=secret'
-      - 'MONGO_INITDB_ROOT_USERNAME=root'
-    ports:
-      - '27017'
+#version: '3.8'
+
+#services:
+ # mongodb:
+  #  image: 'mongo:6.0'
+   # container_name: mongo-athletia
+   # ports:
+   #   - "27017:27017"
+   # volumes:
+   #   - mongo-data:/data/db
+   # environment:
+   #   MONGO_INITDB_ROOT_USERNAME: root
+   #   MONGO_INITDB_ROOT_PASSWORD: root
+   # restart: unless-stopped
+
+#volumes:
+#  mongo-data:
