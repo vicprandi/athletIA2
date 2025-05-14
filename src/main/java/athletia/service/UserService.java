@@ -9,4 +9,10 @@ public interface UserService {
     UserResponse createUser(UserRequest request);
 
     UserResponse getUserById(String userId);
+
+    UserResponse getAuthenticatedUser();
+
+    UserResponse updateAuthenticatedUser(UserRequest request);
+
+
 }

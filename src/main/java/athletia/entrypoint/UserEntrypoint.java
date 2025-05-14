@@ -41,4 +41,18 @@ public class UserEntrypoint {
     public UserResponse findById(@Valid @PathVariable(name = "userId")  String userId){
         return controller.findById(userId);
     }
+
+    @Operation(summary = "Get profile of authenticated user")
+    @GetMapping("/me")
+    @ResponseStatus(HttpStatus.OK)
+    public UserResponse getMyProfile() {
+        return controller.getAuthenticatedUserProfile();
+    }
+
+    @Operation(summary = "Update profile of authenticated user")
+    @PutMapping("/me")
+    @ResponseStatus(HttpStatus.OK)
+    public UserResponse updateMyProfile(@Valid @RequestBody UserRequest request) {
+        return controller.updateAuthenticatedUserProfile(request);
+    }
 }

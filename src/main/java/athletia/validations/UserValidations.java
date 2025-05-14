@@ -31,4 +31,20 @@ public class UserValidations {
             throw new IllegalArgumentException("Password must have uppercase, lowercase and special characters.");
         }
     }
+
+    public void validateEmailUniquenessOnUpdate(String email, String currentUserId) {
+        boolean emailUsedByAnother = repository.existsByEmailAndIdNot(email, currentUserId);
+        if (emailUsedByAnother) {
+            throw new IllegalArgumentException("Email already in use by another user.");
+        }
+    }
+
+    public void validateUsernameUniquenessOnUpdate(String username, String currentUserId) {
+        boolean usernameUsedByAnother = repository.existsByUsernameAndIdNot(username, currentUserId);
+        if (usernameUsedByAnother) {
+            throw new IllegalArgumentException("Username already in use by another user.");
+        }
+    }
+
+
 }

@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.Instant;
+import java.time.LocalDate;
 
 @Builder
 @Document(collection = "users")
@@ -22,6 +23,16 @@ public record User(
         String email,
 
         String password,
+
+        Double height,
+
+        Double weight,
+
+        LocalDate birthDate,
+
+        Gender gender,
+
+        TrainingLevel level,
 
         Instant createdAt
 ) {}

@@ -1,6 +1,8 @@
 package athletia.service.impl;
 
 import athletia.config.mapper.GenericMapper;
+import athletia.model.Gender;
+import athletia.model.TrainingLevel;
 import athletia.model.User;
 import athletia.model.request.UserRequest;
 import athletia.model.response.UserResponse;
@@ -16,6 +18,7 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -48,7 +51,12 @@ class UserServiceImplTest {
                 "Alice",
                 "alice",
                 "alice@example.com",
-                "pass123"
+                "pass123",
+                1.65,
+                60.0,
+                LocalDate.of(1998, 4, 22),
+                Gender.FEMALE,
+                TrainingLevel.BEGINNER
         );
 
         userEntity = User.builder()
@@ -57,6 +65,11 @@ class UserServiceImplTest {
                 .username("alice")
                 .email("alice@example.com")
                 .password("pass123")
+                .height(1.65)
+                .weight(60.0)
+                .birthDate(LocalDate.of(1998, 4, 22))
+                .gender(Gender.FEMALE)
+                .level(TrainingLevel.BEGINNER)
                 .createdAt(Instant.parse("2025-05-14T00:00:00Z"))
                 .build();
 
@@ -65,6 +78,11 @@ class UserServiceImplTest {
                 "Alice",
                 "alice",
                 "alice@example.com",
+                1.65,
+                60.0,
+                LocalDate.of(1998, 4, 22),
+                Gender.FEMALE,
+                TrainingLevel.BEGINNER,
                 Instant.parse("2025-05-14T00:00:00Z")
         );
 

@@ -22,4 +22,15 @@ public class UserController {
     public UserResponse findById(String userId){
         return service.getUserById(userId);
     }
+
+    public UserResponse getAuthenticatedUserProfile() {
+        return service.getAuthenticatedUser();
+    }
+
+    public UserResponse updateAuthenticatedUserProfile(UserRequest request) {
+        return service.updateAuthenticatedUser(request);
+    }
+
+
+
 }
