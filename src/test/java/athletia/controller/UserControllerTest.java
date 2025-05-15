@@ -5,6 +5,7 @@ import athletia.entrypoint.UserEntrypoint;
 import athletia.model.request.UserProfileUpdateRequest;
 import athletia.model.response.UserResponse;
 import athletia.util.Gender;
+import athletia.util.Goal;
 import athletia.util.TrainingLevel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -53,7 +54,8 @@ class UserControllerTest {
           "weight": 82.5,
           "birthDate": "1995-06-15",
           "gender": "MALE",
-          "level": "INTERMEDIATE"
+          "level": "INTERMEDIATE",
+          "goal": "WEIGHT_LOSS"
         }
         """;
 
@@ -67,6 +69,7 @@ class UserControllerTest {
                 LocalDate.of(1995, 6, 15),
                 Gender.MALE,
                 TrainingLevel.INTERMEDIATE,
+                Goal.WEIGHT_LOSS,
                 Instant.parse("2025-05-14T00:00:00Z")
         );
 

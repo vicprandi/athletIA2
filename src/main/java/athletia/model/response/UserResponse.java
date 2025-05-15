@@ -1,6 +1,7 @@
 package athletia.model.response;
 
 import athletia.util.Gender;
+import athletia.util.Goal;
 import athletia.util.TrainingLevel;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -27,6 +28,8 @@ public record UserResponse(
         Gender gender,
 
         TrainingLevel level,
+
+        Goal goal,
 
         Instant createdAt
 

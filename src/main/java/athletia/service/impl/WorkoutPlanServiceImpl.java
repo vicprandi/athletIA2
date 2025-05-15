@@ -4,7 +4,9 @@ import athletia.config.mapper.GenericMapper;
 import athletia.model.WorkoutPlan;
 import athletia.model.request.WorkoutPlanRequest;
 import athletia.model.response.WorkoutPlanResponse;
+import athletia.repository.WorkoutExerciseRepository;
 import athletia.repository.WorkoutPlanRepository;
+import athletia.repository.WorkoutSessionRepository;
 import athletia.service.CurrentUserService;
 import athletia.service.WorkoutPlanService;
 import org.springframework.stereotype.Service;
@@ -16,11 +18,15 @@ import java.util.List;
 public class WorkoutPlanServiceImpl implements WorkoutPlanService {
 
     private final WorkoutPlanRepository repository;
+    private final WorkoutExerciseRepository workoutExerciseRepository;
+    private final WorkoutSessionRepository workoutSessionRepository;
     private final GenericMapper mapper;
     private final CurrentUserService currentUserService;
 
-    public WorkoutPlanServiceImpl(WorkoutPlanRepository repository, GenericMapper mapper, CurrentUserService currentUserService) {
+    public WorkoutPlanServiceImpl(WorkoutPlanRepository repository, WorkoutExerciseRepository workoutExerciseRepository, WorkoutSessionRepository workoutSessionRepository, GenericMapper mapper, CurrentUserService currentUserService) {
         this.repository = repository;
+        this.workoutExerciseRepository = workoutExerciseRepository;
+        this.workoutSessionRepository = workoutSessionRepository;
         this.mapper = mapper;
         this.currentUserService = currentUserService;
     }
@@ -50,4 +56,20 @@ public class WorkoutPlanServiceImpl implements WorkoutPlanService {
                 .map(plan -> mapper.map(plan, WorkoutPlanResponse.class))
                 .toList();
     }
+
+    @Override
+    public void deleteAllWorkoutPlansForAuthenticatedUser() {
+        String userId = currentUserService.getCurrentUserId();
+
+        List<WorkoutPlan> plans = repository.findAllByUserId(userId);
+
+        for (WorkoutPlan plan : plans) {
+            workoutExerciseRepository.deleteAllByWorkoutPlanId(plan.id());
+            workoutSessionRepository.deleteAllByWorkoutPlanId(plan.id());
+
+            repository.deleteById(plan.id());
+        }
+    }
+
+
 }

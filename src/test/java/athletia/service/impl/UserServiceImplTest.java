@@ -6,6 +6,7 @@ import athletia.model.request.UserProfileUpdateRequest;
 import athletia.model.response.UserResponse;
 import athletia.repository.UserRepository;
 import athletia.service.CurrentUserService;
+import athletia.util.Goal;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -58,6 +59,7 @@ class UserServiceImplTest {
                 .birthDate(LocalDate.of(1998, 4, 22))
                 .gender(Gender.FEMALE)
                 .level(TrainingLevel.BEGINNER)
+                .goal(Goal.WEIGHT_LOSS)
                 .createdAt(Instant.parse("2025-05-14T00:00:00Z"))
                 .build();
 
@@ -71,6 +73,7 @@ class UserServiceImplTest {
                 LocalDate.of(1998, 4, 22),
                 Gender.FEMALE,
                 TrainingLevel.BEGINNER,
+                Goal.WEIGHT_LOSS,
                 Instant.parse("2025-05-14T00:00:00Z")
         );
 
@@ -79,7 +82,8 @@ class UserServiceImplTest {
                 60.0,
                 LocalDate.of(1998, 4, 22),
                 Gender.FEMALE,
-                TrainingLevel.BEGINNER
+                TrainingLevel.BEGINNER,
+                Goal.WEIGHT_LOSS
         );
 
         when(currentUserService.getCurrentUserId()).thenReturn("42");

@@ -9,4 +9,5 @@ public interface WorkoutExerciseRepository extends MongoRepository<WorkoutExerci
 
     List<WorkoutExercise> findAllByWorkoutPlanIdOrderByOrderAsc(String workoutPlanId);
 
+    void deleteAllByWorkoutPlanId(String workoutPlanId);
 }

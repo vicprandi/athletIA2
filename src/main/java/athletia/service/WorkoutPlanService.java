@@ -10,4 +10,6 @@ public interface WorkoutPlanService {
     WorkoutPlanResponse createWorkoutPlan(WorkoutPlanRequest request);
 
     List<WorkoutPlanResponse> getAllWorkoutPlansByUser();
+
+    void deleteAllWorkoutPlansForAuthenticatedUser();
 }

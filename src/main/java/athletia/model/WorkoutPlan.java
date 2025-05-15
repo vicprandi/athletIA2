@@ -23,6 +23,7 @@ public record WorkoutPlan(
         Integer durationWeeks,
 
         TrainingLevel level,
+
         Goal goal,
 
         Instant createdAt
