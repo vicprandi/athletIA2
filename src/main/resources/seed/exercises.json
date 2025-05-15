@@ -1,0 +1,142 @@
+[
+  {
+    "name": "Supino Reto com Barra",
+    "muscleGroup": "Peito",
+    "type": "Força",
+    "equipment": "Barra",
+    "description": "Exercício composto para trabalhar o peitoral maior e tríceps."
+  },
+  {
+    "name": "Supino Inclinado com Halteres",
+    "muscleGroup": "Peito",
+    "type": "Força",
+    "equipment": "Halteres",
+    "description": "Ativa mais o peitoral superior e o deltoide anterior."
+  },
+  {
+    "name": "Flexão de Braço",
+    "muscleGroup": "Peito",
+    "type": "Força",
+    "equipment": "Peso corporal",
+    "description": "Exercício clássico que usa o peso do corpo para trabalhar o peito e tríceps."
+  },
+  {
+    "name": "Agachamento Livre",
+    "muscleGroup": "Pernas",
+    "type": "Força",
+    "equipment": "Barra",
+    "description": "Exercício fundamental para quadríceps, glúteos e core."
+  },
+  {
+    "name": "Cadeira Extensora",
+    "muscleGroup": "Pernas",
+    "type": "Força",
+    "equipment": "Máquina",
+    "description": "Isola o quadríceps para desenvolver força e definição."
+  },
+  {
+    "name": "Leg Press",
+    "muscleGroup": "Pernas",
+    "type": "Força",
+    "equipment": "Máquina",
+    "description": "Trabalha quadríceps, glúteos e posterior de coxa com menos impacto na lombar."
+  },
+  {
+    "name": "Remada Curvada com Barra",
+    "muscleGroup": "Costas",
+    "type": "Força",
+    "equipment": "Barra",
+    "description": "Ativa dorsais, romboides e trapézio."
+  },
+  {
+    "name": "Puxada na Frente",
+    "muscleGroup": "Costas",
+    "type": "Força",
+    "equipment": "Máquina",
+    "description": "Imita a barra fixa, trabalhando dorsais com mais controle."
+  },
+  {
+    "name": "Barra Fixa",
+    "muscleGroup": "Costas",
+    "type": "Força",
+    "equipment": "Peso corporal",
+    "description": "Exercício avançado de peso corporal para dorsais e bíceps."
+  },
+  {
+    "name": "Desenvolvimento com Halteres",
+    "muscleGroup": "Ombros",
+    "type": "Força",
+    "equipment": "Halteres",
+    "description": "Trabalha deltoides anterior e medial com boa amplitude."
+  },
+  {
+    "name": "Elevação Lateral",
+    "muscleGroup": "Ombros",
+    "type": "Força",
+    "equipment": "Halteres",
+    "description": "Isola o deltoide lateral para largura dos ombros."
+  },
+  {
+    "name": "Bíceps Rosca Direta",
+    "muscleGroup": "Bíceps",
+    "type": "Força",
+    "equipment": "Barra",
+    "description": "Trabalha o bíceps braquial com foco em força e volume."
+  },
+  {
+    "name": "Rosca Martelo",
+    "muscleGroup": "Bíceps",
+    "type": "Força",
+    "equipment": "Halteres",
+    "description": "Foca no braquial e antebraço, com pegada neutra."
+  },
+  {
+    "name": "Tríceps Testa com Barra",
+    "muscleGroup": "Tríceps",
+    "type": "Força",
+    "equipment": "Barra",
+    "description": "Isola o tríceps com forte estímulo na porção longa."
+  },
+  {
+    "name": "Tríceps Pulley",
+    "muscleGroup": "Tríceps",
+    "type": "Força",
+    "equipment": "Cabo",
+    "description": "Movimento controlado para máxima contração do tríceps."
+  },
+  {
+    "name": "Prancha",
+    "muscleGroup": "Core",
+    "type": "Resistência",
+    "equipment": "Peso corporal",
+    "description": "Isometria intensa para abdômen, lombar e postura."
+  },
+  {
+    "name": "Abdominal Crunch",
+    "muscleGroup": "Abdômen",
+    "type": "Força",
+    "equipment": "Peso corporal",
+    "description": "Movimento básico focado no reto abdominal."
+  },
+  {
+    "name": "Corrida na Esteira",
+    "muscleGroup": "Cardiorrespiratório",
+    "type": "Cardio",
+    "equipment": "Esteira",
+    "description": "Melhora capacidade cardiovascular e queima calórica."
+  },
+  {
+    "name": "Bicicleta Ergométrica",
+    "muscleGroup": "Cardiorrespiratório",
+    "type": "Cardio",
+    "equipment": "Bicicleta",
+    "description": "Treino de baixo impacto com alta queima de calorias."
+  },
+  {
+    "name": "Escada Simuladora",
+    "muscleGroup": "Pernas",
+    "type": "Cardio",
+    "equipment": "Máquina",
+    "description": "Desafia resistência das pernas com foco cardiovascular."
+  }
+]

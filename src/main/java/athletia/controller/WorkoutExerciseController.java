@@ -2,6 +2,7 @@ package athletia.controller;
 
 import athletia.model.request.WorkoutExerciseRequest;
 import athletia.model.response.WorkoutExerciseResponse;
+import athletia.model.response.WorkoutExerciseWithDetailsResponse;
 import athletia.service.WorkoutExerciseService;
 import org.springframework.stereotype.Component;
 
@@ -24,4 +25,7 @@ public class WorkoutExerciseController {
         return service.getExercisesByPlan(planId);
     }
 
+    public List<WorkoutExerciseWithDetailsResponse> listWithDetails(String planId) {
+        return service.findWithDetailsByPlanId(planId);
+    }
 }
