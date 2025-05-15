@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.Instant;
 
-@Builder
+@Builder(toBuilder = true)
 @Document(collection = "workout_plans")
 public record WorkoutPlan(
         @Id
