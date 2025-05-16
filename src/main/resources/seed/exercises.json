@@ -1,5 +1,6 @@
 [
   {
+    "_id": "supino_reto_com_barra_peito",
     "name": "Supino Reto com Barra",
     "muscleGroup": "Peito",
     "type": "Força",
@@ -7,6 +8,7 @@
     "description": "Exercício composto para trabalhar o peitoral maior e tríceps."
   },
   {
+    "_id": "supino_inclinado_com_halteres_peito",
     "name": "Supino Inclinado com Halteres",
     "muscleGroup": "Peito",
     "type": "Força",
@@ -14,6 +16,7 @@
     "description": "Ativa mais o peitoral superior e o deltoide anterior."
   },
   {
+    "_id": "flexao_de_braco_peito",
     "name": "Flexão de Braço",
     "muscleGroup": "Peito",
     "type": "Força",
@@ -21,6 +24,7 @@
     "description": "Exercício clássico que usa o peso do corpo para trabalhar o peito e tríceps."
   },
   {
+    "_id": "agachamento_livre_pernas",
     "name": "Agachamento Livre",
     "muscleGroup": "Pernas",
     "type": "Força",
@@ -28,6 +32,7 @@
     "description": "Exercício fundamental para quadríceps, glúteos e core."
   },
   {
+    "_id": "cadeira_extensora_pernas",
     "name": "Cadeira Extensora",
     "muscleGroup": "Pernas",
     "type": "Força",
@@ -35,6 +40,7 @@
     "description": "Isola o quadríceps para desenvolver força e definição."
   },
   {
+    "_id": "leg_press_pernas",
     "name": "Leg Press",
     "muscleGroup": "Pernas",
     "type": "Força",
@@ -42,6 +48,7 @@
     "description": "Trabalha quadríceps, glúteos e posterior de coxa com menos impacto na lombar."
   },
   {
+    "_id": "remada_curvada_com_barra_costas",
     "name": "Remada Curvada com Barra",
     "muscleGroup": "Costas",
     "type": "Força",
@@ -49,6 +56,7 @@
     "description": "Ativa dorsais, romboides e trapézio."
   },
   {
+    "_id": "puxada_na_frente_costas",
     "name": "Puxada na Frente",
     "muscleGroup": "Costas",
     "type": "Força",
@@ -56,6 +64,7 @@
     "description": "Imita a barra fixa, trabalhando dorsais com mais controle."
   },
   {
+    "_id": "barra_fixa_costas",
     "name": "Barra Fixa",
     "muscleGroup": "Costas",
     "type": "Força",
@@ -63,6 +72,7 @@
     "description": "Exercício avançado de peso corporal para dorsais e bíceps."
   },
   {
+    "_id": "desenvolvimento_com_halteres_ombros",
     "name": "Desenvolvimento com Halteres",
     "muscleGroup": "Ombros",
     "type": "Força",
@@ -70,6 +80,7 @@
     "description": "Trabalha deltoides anterior e medial com boa amplitude."
   },
   {
+    "_id": "elevacao_lateral_ombros",
     "name": "Elevação Lateral",
     "muscleGroup": "Ombros",
     "type": "Força",
@@ -77,6 +88,7 @@
     "description": "Isola o deltoide lateral para largura dos ombros."
   },
   {
+    "_id": "biceps_rosca_direta_biceps",
     "name": "Bíceps Rosca Direta",
     "muscleGroup": "Bíceps",
     "type": "Força",
@@ -84,6 +96,7 @@
     "description": "Trabalha o bíceps braquial com foco em força e volume."
   },
   {
+    "_id": "rosca_martelo_biceps",
     "name": "Rosca Martelo",
     "muscleGroup": "Bíceps",
     "type": "Força",
@@ -91,6 +104,7 @@
     "description": "Foca no braquial e antebraço, com pegada neutra."
   },
   {
+    "_id": "triceps_testa_com_barra_triceps",
     "name": "Tríceps Testa com Barra",
     "muscleGroup": "Tríceps",
     "type": "Força",
@@ -98,6 +112,7 @@
     "description": "Isola o tríceps com forte estímulo na porção longa."
   },
   {
+    "_id": "triceps_pulley_triceps",
     "name": "Tríceps Pulley",
     "muscleGroup": "Tríceps",
     "type": "Força",
@@ -105,6 +120,7 @@
     "description": "Movimento controlado para máxima contração do tríceps."
   },
   {
+    "_id": "prancha_core",
     "name": "Prancha",
     "muscleGroup": "Core",
     "type": "Resistência",
@@ -112,6 +128,7 @@
     "description": "Isometria intensa para abdômen, lombar e postura."
   },
   {
+    "_id": "abdominal_crunch_abdomen",
     "name": "Abdominal Crunch",
     "muscleGroup": "Abdômen",
     "type": "Força",
@@ -119,6 +136,7 @@
     "description": "Movimento básico focado no reto abdominal."
   },
   {
+    "_id": "corrida_na_esteira_cardiorrespiratorio",
     "name": "Corrida na Esteira",
     "muscleGroup": "Cardiorrespiratório",
     "type": "Cardio",
@@ -126,6 +144,7 @@
     "description": "Melhora capacidade cardiovascular e queima calórica."
   },
   {
+    "_id": "bicicleta_ergometrica_cardiorrespiratorio",
     "name": "Bicicleta Ergométrica",
     "muscleGroup": "Cardiorrespiratório",
     "type": "Cardio",
@@ -133,6 +152,7 @@
     "description": "Treino de baixo impacto com alta queima de calorias."
   },
   {
+    "_id": "escada_simuladora_pernas",
     "name": "Escada Simuladora",
     "muscleGroup": "Pernas",
     "type": "Cardio",

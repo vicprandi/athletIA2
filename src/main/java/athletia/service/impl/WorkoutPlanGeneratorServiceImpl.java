@@ -15,6 +15,22 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.util.List;
 
+import athletia.model.*;
+import athletia.model.response.WorkoutPlanResponse;
+import athletia.repository.UserRepository;
+import athletia.repository.WorkoutExerciseRepository;
+import athletia.repository.WorkoutPlanRepository;
+import athletia.service.CurrentUserService;
+import athletia.service.UserService;
+import athletia.service.WorkoutPlanAIService;
+import athletia.service.WorkoutPlanGeneratorService;
+import athletia.config.mapper.GenericMapper;
+import org.springframework.stereotype.Service;
+
+import java.time.Instant;
+import java.util.List;
+import java.util.stream.IntStream;
+
 @Service
 public class WorkoutPlanGeneratorServiceImpl implements WorkoutPlanGeneratorService {
 
@@ -48,10 +64,8 @@ public class WorkoutPlanGeneratorServiceImpl implements WorkoutPlanGeneratorServ
         String userId = currentUserService.getCurrentUserId();
         User user = userService.getFullUserEntityById(userId);
 
-        // IA gera plano personalizado
         WorkoutPlanGenerated generated = workoutPlanAIService.generateWorkoutPlan(user);
 
-        // Persiste WorkoutPlan
         WorkoutPlan plan = WorkoutPlan.builder()
                 .userId(userId)
                 .title(generated.title())
@@ -64,20 +78,23 @@ public class WorkoutPlanGeneratorServiceImpl implements WorkoutPlanGeneratorServ
 
         WorkoutPlan savedPlan = planRepository.save(plan);
 
-        // Persiste os exercícios do plano
-        List<WorkoutExercise> exercises = generated.exercises().stream().map(g -> WorkoutExercise.builder()
-                .workoutPlanId(savedPlan.id())
-                .order(generated.exercises().indexOf(g) + 1)
-                .sets(g.sets())
-                .reps(g.reps())
-                .restSeconds(g.restSeconds())
-                .suggestedLoad(g.suggestedLoad())
-                .build()
-        ).toList();
+        List<WorkoutExercise> exercises = IntStream.range(0, generated.exercises().size())
+                .mapToObj(i -> {
+                    WorkoutExerciseGenerated g = generated.exercises().get(i);
+                    return WorkoutExercise.builder()
+                            .workoutPlanId(savedPlan.id())
+                            .exerciseId(g.exerciseId())
+                            .order(i + 1)
+                            .sets(g.sets())
+                            .reps(g.reps())
+                            .restSeconds(g.restSeconds())
+                            .suggestedLoad(g.suggestedLoad())
+                            .build();
+                })
+                .toList();
 
         exerciseRepository.saveAll(exercises);
 
         return mapper.map(savedPlan, WorkoutPlanResponse.class);
     }
-
 }
