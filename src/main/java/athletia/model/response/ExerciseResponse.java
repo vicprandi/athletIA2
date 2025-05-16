@@ -1,7 +1,9 @@
 package athletia.model.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public record ExerciseResponse(
-        String id,
+        @JsonProperty("_id") String id,
         String name,
         String muscleGroup,
         String type,

@@ -58,9 +58,18 @@ public class UserServiceImpl implements UserService {
                 .birthDate(request.birthDate())
                 .gender(request.gender())
                 .level(request.level())
+                .goal(request.goal())
                 .createdAt(user.createdAt())
                 .build();
 
         return mapper.map(repository.save(updated), UserResponse.class);
     }
+
+    @Override
+    public User getFullUserEntityById(String userId) {
+        return repository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+
 }

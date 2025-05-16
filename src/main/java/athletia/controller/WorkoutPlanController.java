@@ -23,4 +23,8 @@ public class WorkoutPlanController {
     public List<WorkoutPlanResponse> listByUser() {
         return service.getAllWorkoutPlansByUser();
     }
+
+    public void deleteAll() {
+        service.deleteAllWorkoutPlansForAuthenticatedUser();
+    }
 }

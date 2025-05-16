@@ -1,5 +1,6 @@
 package athletia.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -7,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "exercises")
 @Builder(toBuilder = true)
 public record Exercise(
-        @Id String id,
+        @Id @JsonProperty("_id") String id,
         String name,
         String muscleGroup,
         String type,

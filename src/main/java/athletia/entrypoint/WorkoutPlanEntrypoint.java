@@ -42,4 +42,15 @@ public class WorkoutPlanEntrypoint {
     public List<WorkoutPlanResponse> list() {
         return controller.listByUser();
     }
+
+    @Operation(summary = "Delete all workout plans of authenticated user")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "All workout plans deleted")
+    })
+    @DeleteMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAll() {
+        controller.deleteAll();
+    }
+
 }

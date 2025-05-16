@@ -1,6 +1,7 @@
 package athletia.model;
 
 import athletia.util.Gender;
+import athletia.util.Goal;
 import athletia.util.TrainingLevel;
 import lombok.Builder;
 import org.springframework.data.annotation.Id;
@@ -35,6 +36,8 @@ public record User(
         Gender gender,
 
         TrainingLevel level,
+
+        Goal goal,
 
         Instant createdAt
 ) {}
