@@ -15,11 +15,6 @@ import java.util.Map;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<Object> handleIllegalArgument(IllegalArgumentException ex, WebRequest request) {
-        return buildResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), request);
-    }
-
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<Object> handleRuntime(RuntimeException ex, WebRequest request) {
         return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "Unexpected error", request);
@@ -37,6 +32,27 @@ public class GlobalExceptionHandler {
         );
     }
 
+    @ResponseBody
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, String>> handleIllegalArgument(IllegalArgumentException ex) {
+        Map<String, String> response = new HashMap<>();
+
+        switch (ex.getMessage()) {
+            case "Email taken." -> response.put("error", "EMAIL_ALREADY_EXISTS");
+            case "Username taken." -> response.put("error", "USERNAME_ALREADY_EXISTS");
+            case "Password must have uppercase, lowercase and special characters." -> response.put("error", "INVALID_PASSWORD");
+            default -> {
+                response.put("error", "UNKNOWN_ERROR");
+                response.put("message", ex.getMessage());
+            }
+        }
+
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .header("Content-Type", "application/json")
+                .body(response);
+    }
+
+
     private ResponseEntity<Object> buildResponse(HttpStatus status, String message, WebRequest request) {
         Map<String, Object> body = new HashMap<>();
         body.put("timestamp", Instant.now());
@@ -47,6 +63,4 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(body, status);
     }
-
-
 }
