@@ -14,4 +14,6 @@ public interface WorkoutExerciseService {
 
     List<WorkoutExerciseWithDetailsResponse> findWithDetailsByPlanId(String planId);
 
+    void deleteByPlanIdAndExerciseId(String planId, String exerciseId);
+
 }

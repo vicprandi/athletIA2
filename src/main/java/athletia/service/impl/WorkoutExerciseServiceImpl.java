@@ -12,6 +12,8 @@ import athletia.service.WorkoutExerciseService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class WorkoutExerciseServiceImpl implements WorkoutExerciseService {
@@ -20,7 +22,11 @@ public class WorkoutExerciseServiceImpl implements WorkoutExerciseService {
     private final ExerciseRepository exerciseRepository;
     private final GenericMapper mapper;
 
-    public WorkoutExerciseServiceImpl(WorkoutExerciseRepository repository, ExerciseRepository exerciseRepository, GenericMapper mapper) {
+    public WorkoutExerciseServiceImpl(
+            WorkoutExerciseRepository repository,
+            ExerciseRepository exerciseRepository,
+            GenericMapper mapper
+    ) {
         this.repository = repository;
         this.exerciseRepository = exerciseRepository;
         this.mapper = mapper;
@@ -53,22 +59,44 @@ public class WorkoutExerciseServiceImpl implements WorkoutExerciseService {
 
     @Override
     public List<WorkoutExerciseWithDetailsResponse> findWithDetailsByPlanId(String planId) {
-        List<WorkoutExercise> workoutExercises = repository.findAllByWorkoutPlanIdOrderByOrderAsc(planId);
+        List<WorkoutExercise> workouts = repository.findByWorkoutPlanId(planId);
 
-        return workoutExercises.stream().map(we -> {
-            Exercise exercise = exerciseRepository.findById(we.exerciseId())
-                    .orElseThrow(() -> new RuntimeException("Exercise not found for ID: " + we.exerciseId()));
+        Map<String, Exercise> catalog = exerciseRepository.findAll().stream()
+                .collect(Collectors.toMap(Exercise::id, e -> e));
 
-            return new WorkoutExerciseWithDetailsResponse(
-                    we.id(),
-                    we.workoutPlanId(),
-                    we.order(),
-                    we.sets(),
-                    we.reps(),
-                    we.restSeconds(),
-                    we.suggestedLoad(),
-                    exercise
-            );
-        }).toList();
+        return workouts.stream()
+                .map(e -> {
+                    Exercise exercise = catalog.getOrDefault(
+                            e.exerciseId(),
+                            new Exercise(
+                                    "(desconhecido)",      // id
+                                    "(sem nome)",          // name
+                                    "(sem grupo)",         // muscleGroup
+                                    "(sem tipo)",          // type
+                                    "(sem equipamento)",   // equipment
+                                    "(sem descrição)"      // description
+                            )
+                    );
+
+                    return new WorkoutExerciseWithDetailsResponse(
+                            e.id(),
+                            e.workoutPlanId(),
+                            e.order(),
+                            e.sets(),
+                            e.reps(),
+                            e.restSeconds(),
+                            e.suggestedLoad(),
+                            exercise
+                    );
+                })
+                .toList();
+    }
+
+    @Override
+    public void deleteByPlanIdAndExerciseId(String planId, String exerciseId) {
+        WorkoutExercise existing = repository.findByIdAndWorkoutPlanId(exerciseId, planId)
+                .orElseThrow(() -> new RuntimeException("Exercício não encontrado no plano"));
+
+        repository.delete(existing);
     }
 }

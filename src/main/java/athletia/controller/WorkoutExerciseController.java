@@ -28,4 +28,9 @@ public class WorkoutExerciseController {
     public List<WorkoutExerciseWithDetailsResponse> listWithDetails(String planId) {
         return service.findWithDetailsByPlanId(planId);
     }
+
+    public void delete(String planId, String exerciseId) {
+        service.deleteByPlanIdAndExerciseId(planId, exerciseId);
+    }
+
 }

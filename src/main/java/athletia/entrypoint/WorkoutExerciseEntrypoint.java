@@ -37,11 +37,19 @@ public class WorkoutExerciseEntrypoint {
         return controller.listByPlan(planId);
     }
 
-
     @Operation(summary = "List all exercises of a workout plan with full exercise details")
     @GetMapping("/full")
     @ResponseStatus(HttpStatus.OK)
     public List<WorkoutExerciseWithDetailsResponse> getWithDetails(@PathVariable String planId) {
         return controller.listWithDetails(planId);
     }
+
+    @DeleteMapping("/{workoutExerciseId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteExercise(
+            @PathVariable String planId,
+            @PathVariable String workoutExerciseId) {
+        controller.delete(planId, workoutExerciseId);
+    }
+
 }

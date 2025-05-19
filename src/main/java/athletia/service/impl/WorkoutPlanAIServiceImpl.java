@@ -95,7 +95,7 @@ public class WorkoutPlanAIServiceImpl implements WorkoutPlanAIService {
                   ]
                 }
 
-                Não inclua explicações, comentários ou valores fictícios. Apenas retorne o JSON. Lembre-se de retornar os exercícios baseado nas características da pessoa e do que ela precisa.
+                Não inclua explicações, comentários ou valores fictícios. Apenas retorne o JSON. Lembre-se de retornar os exercícios baseado (ao menos 8 exercícios) nas características da pessoa e do que ela precisa.
                 """,
                 age, user.gender(), user.height(), user.weight(), user.level(), user.goal(), exerciseCatalog);
 
@@ -117,9 +117,14 @@ public class WorkoutPlanAIServiceImpl implements WorkoutPlanAIService {
                 .getContent();
 
         try {
+            System.out.println("🔍 IA RESPONSE:");
+            System.out.println(json);
             return objectMapper.readValue(json, WorkoutPlanGenerated.class);
         } catch (Exception e) {
-            throw new RuntimeException("Failed to parse AI response into WorkoutPlanGenerated: " + e.getMessage(), e);
+            System.err.println("❌ Erro ao fazer parse da IA:");
+            e.printStackTrace();
+            throw new RuntimeException("Erro ao gerar plano com IA", e);
         }
+
     }
 }
