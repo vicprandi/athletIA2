@@ -2,7 +2,6 @@ package athletia.entrypoint;
 
 import athletia.controller.UserController;
 import athletia.model.request.UserProfileUpdateRequest;
-import athletia.model.request.UserRequest;
 import athletia.model.response.UserResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
