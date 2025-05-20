@@ -58,8 +58,8 @@ public class WorkoutPlanAIServiceImpl implements WorkoutPlanAIService {
             - Cadeira Flexora (Posterior de Coxa) => ID: cadeira_flexora_posterior
             - Elevação de Panturrilha em Pé (Panturrilha) => ID: panturrilha_em_pe_maquina_panturrilha
             - Elevação de Panturrilha Sentado (Panturrilha) => ID: panturrilha_sentado_maquina_panturrilha
-            - Glúteo na Polia (Glúteos) => ID: gluteo_na_polia_gluteos
-            - Kickback com Halter (Glúteos) => ID: kickback_com_halter_gluteos
+            - Glúdeo na Polia (Glúdeos) => ID: gluteo_na_polia_gluteos
+            - Kickback com Halter (Glúdeos) => ID: kickback_com_halter_gluteos
             - Remada Curvada com Barra (Costas) => ID: remada_curvada_com_barra_costas
             - Remada Unilateral com Halter (Costas) => ID: remada_unilateral_com_halter_costas
             - Remada Baixa na Polia (Costas) => ID: remada_baixa_na_polia_costas
@@ -103,32 +103,21 @@ public class WorkoutPlanAIServiceImpl implements WorkoutPlanAIService {
                 - Nível: %s
                 - Objetivo: %s
 
-                Leve em consideração idade, peso e nível de treinamento para adaptar a carga, volume e intensidade dos exercícios. 
+                Leve em consideração idade, peso e nível de treinamento para adaptar a carga, volume e intensidade dos exercícios.
 
                 %s
 
                 Regras importantes:
                 - Mínimo de 8 exercícios
-                        * Iniciante: escolha aleatoriamente entre 2 ou 3 séries, e entre 10, 12 ou 15 repetições (como número inteiro)
-                        * Intermediário: escolha aleatoriamente entre 3 ou 4 séries, e entre 8, 10 ou 12 repetições (como número inteiro)
-                        * Avançado: escolha aleatoriamente entre 4 ou 5 séries, e entre 6, 8 ou 10 repetições (como número inteiro)
-                        
-                 Importante: o campo "reps" deve conter apenas um número inteiro, como 12. Não use intervalos como "12-15".
-                - Para exercícios cardiorrespiratórios (esteira, bicicleta, escada):
-                  * sets = 1
-                  * reps = minutos de execução (ex: 15)
-                  * restSeconds = 0
-                  * NÃO incluir suggestedLoad
-                - Para prancha:
-                  * reps = tempo em segundos (ex: 30)
-                  * sets entre 2 e 3
-                  * NÃO incluir suggestedLoad
-                - Para exercícios com peso corporal (ex: flexão, barra fixa):
-                  * NÃO incluir suggestedLoad, exceto se houver sobrecarga
-                - Lembre-se que nem todos são 60 de descanso, 3x12 e etc, tem que ser personalizado pra cada pessoa.
-                - Lembre-se também que nem sempre a duração é de 4 semanas, e o sets/reps/rest/suggestLoad depende de cada pessoa.
+                * Iniciante: escolha entre 2 ou 3 séries, e entre 10, 12 ou 15 repetições
+                * Intermediário: escolha entre 3 ou 4 séries, e entre 8, 10 ou 12 repetições
+                * Avançado: escolha entre 4 ou 5 séries, e entre 6, 8 ou 10 repetições
+
+                - O campo "suggestedLoad" deve ser incluído **apenas se o exercício tiver carga real (halter, barra, máquina)**.
+                - Nunca inclua "suggestedLoad" se o exercício for de peso corporal, prancha ou cardio.
+                - Nunca envie o campo "suggestedLoad" com valor 0. Se não houver carga real, não inclua o campo.
                 - Sempre valide que o campo "exerciseId" existe no catálogo fornecido. Nunca invente um ID fora da lista.
-         
+
                 Retorne SOMENTE o JSON com este formato:
                 {
                   "title": "string",
@@ -142,7 +131,7 @@ public class WorkoutPlanAIServiceImpl implements WorkoutPlanAIService {
                       "sets": número,
                       "reps": número,
                       "restSeconds": número,
-                      "suggestedLoad": número (opcional apenas para exercicios que não pegam carga)
+                      "suggestedLoad": número (somente se for maior que 0 e usar carga real)
                     }
                   ]
                 }
@@ -167,11 +156,11 @@ public class WorkoutPlanAIServiceImpl implements WorkoutPlanAIService {
                 .getContent();
 
         try {
-            System.out.println("🔍 IA RESPONSE:");
+            System.out.println("\uD83D\uDD0D IA RESPONSE:");
             System.out.println(json);
             return objectMapper.readValue(json, WorkoutPlanGenerated.class);
         } catch (Exception e) {
-            System.err.println("❌ Erro ao fazer parse da IA:");
+            System.err.println("\u274C Erro ao fazer parse da IA:");
             e.printStackTrace();
             throw new RuntimeException("Erro ao gerar plano com IA", e);
         }
