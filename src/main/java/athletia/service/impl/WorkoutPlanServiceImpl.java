@@ -71,5 +71,20 @@ public class WorkoutPlanServiceImpl implements WorkoutPlanService {
         }
     }
 
+    @Override
+    public void deleteById(String planId) {
+        WorkoutPlan plan = repository.findById(planId)
+                .orElseThrow(() -> new RuntimeException("Plano não encontrado"));
+
+        String currentUserId = currentUserService.getCurrentUserId();
+        if (!plan.userId().equals(currentUserId)) {
+            throw new RuntimeException("Acesso negado ao plano de outro usuário");
+        }
+
+        workoutExerciseRepository.deleteAllByWorkoutPlanId(plan.id());
+        workoutSessionRepository.deleteAllByWorkoutPlanId(plan.id());
+
+        repository.deleteById(planId);
+    }
 
 }

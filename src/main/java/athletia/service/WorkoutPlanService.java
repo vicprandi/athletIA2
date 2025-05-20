@@ -12,4 +12,6 @@ public interface WorkoutPlanService {
     List<WorkoutPlanResponse> getAllWorkoutPlansByUser();
 
     void deleteAllWorkoutPlansForAuthenticatedUser();
+
+    void deleteById(String planId);
 }

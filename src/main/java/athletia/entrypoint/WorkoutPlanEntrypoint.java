@@ -53,4 +53,15 @@ public class WorkoutPlanEntrypoint {
         controller.deleteAll();
     }
 
+    @Operation(summary = "Delete a specific workout plan by ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Workout plan deleted"),
+            @ApiResponse(responseCode = "404", description = "Plan not found")
+    })
+    @DeleteMapping("/{planId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteById(@PathVariable String planId) {
+        controller.deleteById(planId);
+    }
+
 }

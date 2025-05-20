@@ -9,4 +9,6 @@ public interface WorkoutPlanRepository extends MongoRepository<WorkoutPlan, Stri
 
     List<WorkoutPlan> findAllByUserId(String userId);
 
+    void deleteById(String id);
+
 }

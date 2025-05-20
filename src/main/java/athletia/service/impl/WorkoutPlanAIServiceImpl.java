@@ -142,7 +142,7 @@ public class WorkoutPlanAIServiceImpl implements WorkoutPlanAIService {
                       "sets": número,
                       "reps": número,
                       "restSeconds": número,
-                      "suggestedLoad": número (opcional)
+                      "suggestedLoad": número (opcional apenas para exercicios que não pegam carga)
                     }
                   ]
                 }

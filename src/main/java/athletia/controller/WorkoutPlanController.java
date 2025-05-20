@@ -27,4 +27,9 @@ public class WorkoutPlanController {
     public void deleteAll() {
         service.deleteAllWorkoutPlansForAuthenticatedUser();
     }
+
+    public void deleteById(String planId) {
+        service.deleteById(planId);
+    }
+
 }
