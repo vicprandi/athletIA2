@@ -40,30 +40,58 @@ public class WorkoutPlanAIServiceImpl implements WorkoutPlanAIService {
         int age = Period.between(user.birthDate(), LocalDate.now()).getYears();
 
         String exerciseCatalog = """
-                Use somente os seguintes exercícios (nome + grupo muscular + id):
-                - Supino Reto com Barra (Peito) => ID: supino_reto_com_barra_peito
-                - Supino Inclinado com Halteres (Peito) => ID: supino_inclinado_com_halteres_peito
-                - Flexão de Braço (Peito) => ID: flexao_de_braco_peito
-                - Agachamento Livre (Pernas) => ID: agachamento_livre_pernas
-                - Cadeira Extensora (Pernas) => ID: cadeira_extensora_pernas
-                - Leg Press (Pernas) => ID: leg_press_pernas
-                - Remada Curvada com Barra (Costas) => ID: remada_curvada_com_barra_costas
-                - Puxada na Frente (Costas) => ID: puxada_na_frente_costas
-                - Barra Fixa (Costas) => ID: barra_fixa_costas
-                - Desenvolvimento com Halteres (Ombros) => ID: desenvolvimento_com_halteres_ombros
-                - Elevação Lateral (Ombros) => ID: elevacao_lateral_ombros
-                - Bíceps Rosca Direta (Bíceps) => ID: biceps_rosca_direta_biceps
-                - Rosca Martelo (Bíceps) => ID: rosca_martelo_biceps
-                - Tríceps Testa com Barra (Tríceps) => ID: triceps_testa_com_barra_triceps
-                - Tríceps Pulley (Tríceps) => ID: triceps_pulley_triceps
-                - Prancha (Core) => ID: prancha_core
-                - Abdominal Crunch (Abdômen) => ID: abdominal_crunch_abdomen
-                - Corrida na Esteira (Cardiorrespiratório) => ID: corrida_na_esteira_cardiorrespiratorio
-                - Bicicleta Ergométrica (Cardiorrespiratório) => ID: bicicleta_ergometrica_cardiorrespiratorio
-                - Escada Simuladora (Pernas) => ID: escada_simuladora_pernas
-
-                Utilize apenas os nomes e IDs exatos acima. Para cada exercício, inclua o campo "exerciseId" com o ID correspondente. Não invente exercícios ou traduções. Escolha com base no objetivo e nível do usuário.
-                """;
+            Use somente os seguintes exercícios (nome + grupo muscular + id):
+            - Supino Reto com Barra (Peito) => ID: supino_reto_com_barra_peito
+            - Supino Inclinado com Halteres (Peito) => ID: supino_inclinado_com_halteres_peito
+            - Crucifixo Reto com Halteres (Peito) => ID: crucifixo_reto_com_halteres_peito
+            - Flexão de Braço (Peito) => ID: flexao_de_braco_peito
+            - Pullover com Halter (Peito) => ID: pullover_com_halter_peito
+            - Crucifixo na Máquina (Peito) => ID: crucifixo_na_maquina_peito
+            - Voador Peitoral (Peito) => ID: voador_peitoral_maquina_peito
+            - Agachamento Livre (Pernas) => ID: agachamento_livre_pernas
+            - Cadeira Extensora (Pernas) => ID: cadeira_extensora_pernas
+            - Leg Press (Pernas) => ID: leg_press_pernas
+            - Passada com Halteres (Pernas) => ID: passada_com_halteres_pernas
+            - Subida no Banco com Halteres (Pernas) => ID: subida_no_banco_com_halteres_pernas
+            - Afundo Búlgaro (Pernas) => ID: afundo_bulgaro_pernas
+            - Stiff com Barra (Posterior de Coxa) => ID: stiff_com_barra_posterior
+            - Cadeira Flexora (Posterior de Coxa) => ID: cadeira_flexora_posterior
+            - Elevação de Panturrilha em Pé (Panturrilha) => ID: panturrilha_em_pe_maquina_panturrilha
+            - Elevação de Panturrilha Sentado (Panturrilha) => ID: panturrilha_sentado_maquina_panturrilha
+            - Glúteo na Polia (Glúteos) => ID: gluteo_na_polia_gluteos
+            - Kickback com Halter (Glúteos) => ID: kickback_com_halter_gluteos
+            - Remada Curvada com Barra (Costas) => ID: remada_curvada_com_barra_costas
+            - Remada Unilateral com Halter (Costas) => ID: remada_unilateral_com_halter_costas
+            - Remada Baixa na Polia (Costas) => ID: remada_baixa_na_polia_costas
+            - Puxada Frontal na Polia (Costas) => ID: puxada_frontal_maquina_costas
+            - Barra Fixa (Costas) => ID: barra_fixa_costas
+            - Encolhimento com Halteres (Trapézio) => ID: encolhimento_com_halteres_trapezio
+            - Encolhimento na Máquina (Trapézio) => ID: encolhimento_na_maquina_trapezio
+            - Desenvolvimento com Halteres (Ombros) => ID: desenvolvimento_com_halteres_ombros
+            - Desenvolvimento na Máquina (Ombros) => ID: desenvolvimento_maquina_ombros
+            - Elevação Lateral (Ombros) => ID: elevacao_lateral_ombros
+            - Elevação Frontal com Halteres (Ombros) => ID: elevacao_frontal_ombros
+            - Crucifixo Inverso na Máquina (Ombros) => ID: crucifixo_inverso_maquina_ombros
+            - Rosca Direta com Barra (Bíceps) => ID: biceps_rosca_direta_biceps
+            - Rosca Martelo (Bíceps) => ID: rosca_martelo_biceps
+            - Rosca Concentrada (Bíceps) => ID: rosca_concentrada_biceps
+            - Rosca Scott na Máquina (Bíceps) => ID: rosca_scott_maquina_biceps
+            - Rosca Inversa com Barra (Bíceps) => ID: rosca_inversa_barra_biceps
+            - Tríceps Pulley (Tríceps) => ID: triceps_pulley_triceps
+            - Tríceps Testa com Barra (Tríceps) => ID: triceps_testa_com_barra_triceps
+            - Tríceps Coice com Halter (Tríceps) => ID: triceps_coice_com_halter_triceps
+            - Tríceps Francês com Halter (Tríceps) => ID: triceps_frances_com_halter_triceps
+            - Mergulho entre Bancos (Tríceps) => ID: mergulho_banco_triceps
+            - Abdominal Crunch (Abdômen) => ID: abdominal_crunch_abdomen
+            - Abdominal na Máquina (Abdômen) => ID: abdominal_na_maquina_abdomen
+            - Twist Russo (Abdômen) => ID: twist_russo_abdomen
+            - Prancha (Core) => ID: prancha_core
+            - Prancha Lateral (Core) => ID: prancha_lateral_core
+            - Corrida na Esteira (Cardiorrespiratório) => ID: corrida_na_esteira_cardiorrespiratorio
+            - Bicicleta Ergométrica (Cardiorrespiratório) => ID: bicicleta_ergometrica_cardiorrespiratorio
+            - Escada Simuladora (Cardiorrespiratório) => ID: escada_simuladora_cardiorrespiratorio
+            - Polichinelo (Cardiorrespiratório) => ID: polichinelo_cardiorrespiratorio
+        """;
 
         String prompt = String.format("""
                 Você é uma IA treinadora pessoal.
@@ -75,9 +103,33 @@ public class WorkoutPlanAIServiceImpl implements WorkoutPlanAIService {
                 - Nível: %s
                 - Objetivo: %s
 
+                Leve em consideração idade, peso e nível de treinamento para adaptar a carga, volume e intensidade dos exercícios. 
+
                 %s
 
-                Responda SOMENTE com um JSON válido no seguinte formato:
+                Regras importantes:
+                - Mínimo de 8 exercícios
+                        * Iniciante: escolha aleatoriamente entre 2 ou 3 séries, e entre 10, 12 ou 15 repetições (como número inteiro)
+                        * Intermediário: escolha aleatoriamente entre 3 ou 4 séries, e entre 8, 10 ou 12 repetições (como número inteiro)
+                        * Avançado: escolha aleatoriamente entre 4 ou 5 séries, e entre 6, 8 ou 10 repetições (como número inteiro)
+                        
+                 Importante: o campo "reps" deve conter apenas um número inteiro, como 12. Não use intervalos como "12-15".
+                - Para exercícios cardiorrespiratórios (esteira, bicicleta, escada):
+                  * sets = 1
+                  * reps = minutos de execução (ex: 15)
+                  * restSeconds = 0
+                  * NÃO incluir suggestedLoad
+                - Para prancha:
+                  * reps = tempo em segundos (ex: 30)
+                  * sets entre 2 e 3
+                  * NÃO incluir suggestedLoad
+                - Para exercícios com peso corporal (ex: flexão, barra fixa):
+                  * NÃO incluir suggestedLoad, exceto se houver sobrecarga
+                - Lembre-se que nem todos são 60 de descanso, 3x12 e etc, tem que ser personalizado pra cada pessoa.
+                - Lembre-se também que nem sempre a duração é de 4 semanas, e o sets/reps/rest/suggestLoad depende de cada pessoa.
+                - Sempre valide que o campo "exerciseId" existe no catálogo fornecido. Nunca invente um ID fora da lista.
+         
+                Retorne SOMENTE o JSON com este formato:
                 {
                   "title": "string",
                   "description": "string",
@@ -87,20 +139,18 @@ public class WorkoutPlanAIServiceImpl implements WorkoutPlanAIService {
                       "exerciseId": "string",
                       "name": "string",
                       "muscleGroup": "string",
-                      "sets": 3,
-                      "reps": 12,
-                      "restSeconds": 60,
-                      "suggestedLoad": 30.0
+                      "sets": número,
+                      "reps": número,
+                      "restSeconds": número,
+                      "suggestedLoad": número (opcional)
                     }
                   ]
                 }
-
-                Não inclua explicações, comentários ou valores fictícios. Apenas retorne o JSON. Lembre-se de retornar os exercícios baseado (ao menos 8 exercícios) nas características da pessoa e do que ela precisa.
                 """,
                 age, user.gender(), user.height(), user.weight(), user.level(), user.goal(), exerciseCatalog);
 
         ChatMessage system = new ChatMessage(ChatMessageRole.SYSTEM.value(),
-                "Você é uma IA de treino que responde somente com JSON válido e compatível com o modelo esperado.");
+                "Você é uma IA de treino que responde apenas com JSON válido e compatível com o modelo esperado.");
         ChatMessage userMsg = new ChatMessage(ChatMessageRole.USER.value(), prompt);
 
         ChatCompletionRequest request = ChatCompletionRequest.builder()
@@ -125,6 +175,5 @@ public class WorkoutPlanAIServiceImpl implements WorkoutPlanAIService {
             e.printStackTrace();
             throw new RuntimeException("Erro ao gerar plano com IA", e);
         }
-
     }
 }

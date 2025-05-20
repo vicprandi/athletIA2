@@ -13,7 +13,15 @@
     "muscleGroup": "Peito",
     "type": "Força",
     "equipment": "Halteres",
-    "description": "Ativa mais o peitoral superior e o deltoide anterior."
+    "description": "Ativa o peitoral superior e deltoides anteriores."
+  },
+  {
+    "_id": "crucifixo_reto_com_halteres_peito",
+    "name": "Crucifixo Reto com Halteres",
+    "muscleGroup": "Peito",
+    "type": "Força",
+    "equipment": "Halteres",
+    "description": "Isola o peitoral com movimento de abertura dos braços."
   },
   {
     "_id": "flexao_de_braco_peito",
@@ -21,7 +29,15 @@
     "muscleGroup": "Peito",
     "type": "Força",
     "equipment": "Peso corporal",
-    "description": "Exercício clássico que usa o peso do corpo para trabalhar o peito e tríceps."
+    "description": "Exercício clássico que utiliza o peso do corpo para trabalhar o peitoral e tríceps."
+  },
+  {
+    "_id": "pullover_com_halter_peito",
+    "name": "Pullover com Halter",
+    "muscleGroup": "Peito",
+    "type": "Força",
+    "equipment": "Halter",
+    "description": "Trabalha peitoral e dorsais com ênfase na expansão torácica."
   },
   {
     "_id": "agachamento_livre_pernas",
@@ -29,7 +45,7 @@
     "muscleGroup": "Pernas",
     "type": "Força",
     "equipment": "Barra",
-    "description": "Exercício fundamental para quadríceps, glúteos e core."
+    "description": "Trabalha quadríceps, glúteos e core com barra nas costas."
   },
   {
     "_id": "cadeira_extensora_pernas",
@@ -37,7 +53,7 @@
     "muscleGroup": "Pernas",
     "type": "Força",
     "equipment": "Máquina",
-    "description": "Isola o quadríceps para desenvolver força e definição."
+    "description": "Isola o quadríceps para desenvolvimento de força e volume."
   },
   {
     "_id": "leg_press_pernas",
@@ -45,7 +61,47 @@
     "muscleGroup": "Pernas",
     "type": "Força",
     "equipment": "Máquina",
-    "description": "Trabalha quadríceps, glúteos e posterior de coxa com menos impacto na lombar."
+    "description": "Trabalha quadríceps, glúteos e posteriores com apoio lombar."
+  },
+  {
+    "_id": "passada_com_halteres_pernas",
+    "name": "Passada com Halteres",
+    "muscleGroup": "Pernas",
+    "type": "Força",
+    "equipment": "Halteres",
+    "description": "Desenvolve equilíbrio, glúteos e quadríceps em movimento unilateral."
+  },
+  {
+    "_id": "stiff_com_barra_posterior",
+    "name": "Stiff com Barra",
+    "muscleGroup": "Posterior de Coxa",
+    "type": "Força",
+    "equipment": "Barra",
+    "description": "Foca nos isquiotibiais e glúteos com movimento de dobramento do quadril."
+  },
+  {
+    "_id": "cadeira_flexora_posterior",
+    "name": "Cadeira Flexora",
+    "muscleGroup": "Posterior de Coxa",
+    "type": "Força",
+    "equipment": "Máquina",
+    "description": "Isola os isquiotibiais com flexão de joelhos em posição sentada."
+  },
+  {
+    "_id": "panturrilha_em_pe_maquina_panturrilha",
+    "name": "Elevação de Panturrilha em Pé",
+    "muscleGroup": "Panturrilha",
+    "type": "Força",
+    "equipment": "Máquina",
+    "description": "Fortalece os músculos gastrocnêmio e sóleo."
+  },
+  {
+    "_id": "panturrilha_sentado_maquina_panturrilha",
+    "name": "Elevação de Panturrilha Sentado",
+    "muscleGroup": "Panturrilha",
+    "type": "Força",
+    "equipment": "Máquina",
+    "description": "Trabalha o sóleo com carga sobre os joelhos."
   },
   {
     "_id": "remada_curvada_com_barra_costas",
@@ -53,15 +109,23 @@
     "muscleGroup": "Costas",
     "type": "Força",
     "equipment": "Barra",
-    "description": "Ativa dorsais, romboides e trapézio."
+    "description": "Exercício composto que ativa dorsais, trapézio e romboides."
   },
   {
-    "_id": "puxada_na_frente_costas",
-    "name": "Puxada na Frente",
+    "_id": "remada_unilateral_com_halter_costas",
+    "name": "Remada Unilateral com Halter",
+    "muscleGroup": "Costas",
+    "type": "Força",
+    "equipment": "Halter",
+    "description": "Permite maior amplitude e foco unilateral nas costas."
+  },
+  {
+    "_id": "puxada_frontal_maquina_costas",
+    "name": "Puxada Frontal na Polia",
     "muscleGroup": "Costas",
     "type": "Força",
     "equipment": "Máquina",
-    "description": "Imita a barra fixa, trabalhando dorsais com mais controle."
+    "description": "Trabalha dorsais com controle e segurança."
   },
   {
     "_id": "barra_fixa_costas",
@@ -69,7 +133,7 @@
     "muscleGroup": "Costas",
     "type": "Força",
     "equipment": "Peso corporal",
-    "description": "Exercício avançado de peso corporal para dorsais e bíceps."
+    "description": "Exercício avançado para dorsais, bíceps e core."
   },
   {
     "_id": "desenvolvimento_com_halteres_ombros",
@@ -77,7 +141,7 @@
     "muscleGroup": "Ombros",
     "type": "Força",
     "equipment": "Halteres",
-    "description": "Trabalha deltoides anterior e medial com boa amplitude."
+    "description": "Trabalha deltoides com maior controle de movimento."
   },
   {
     "_id": "elevacao_lateral_ombros",
@@ -88,12 +152,28 @@
     "description": "Isola o deltoide lateral para largura dos ombros."
   },
   {
+    "_id": "elevacao_frontal_ombros",
+    "name": "Elevação Frontal com Halteres",
+    "muscleGroup": "Ombros",
+    "type": "Força",
+    "equipment": "Halteres",
+    "description": "Foca no deltoide anterior com controle."
+  },
+  {
+    "_id": "crucifixo_inverso_maquina_ombros",
+    "name": "Crucifixo Inverso na Máquina",
+    "muscleGroup": "Ombros",
+    "type": "Força",
+    "equipment": "Máquina",
+    "description": "Trabalha deltoide posterior e estabilizadores escapulares."
+  },
+  {
     "_id": "biceps_rosca_direta_biceps",
-    "name": "Bíceps Rosca Direta",
+    "name": "Rosca Direta com Barra",
     "muscleGroup": "Bíceps",
     "type": "Força",
     "equipment": "Barra",
-    "description": "Trabalha o bíceps braquial com foco em força e volume."
+    "description": "Desenvolve força e volume no bíceps braquial."
   },
   {
     "_id": "rosca_martelo_biceps",
@@ -101,15 +181,15 @@
     "muscleGroup": "Bíceps",
     "type": "Força",
     "equipment": "Halteres",
-    "description": "Foca no braquial e antebraço, com pegada neutra."
+    "description": "Trabalha o braquial e antebraços com pegada neutra."
   },
   {
-    "_id": "triceps_testa_com_barra_triceps",
-    "name": "Tríceps Testa com Barra",
-    "muscleGroup": "Tríceps",
+    "_id": "rosca_concentrada_biceps",
+    "name": "Rosca Concentrada",
+    "muscleGroup": "Bíceps",
     "type": "Força",
-    "equipment": "Barra",
-    "description": "Isola o tríceps com forte estímulo na porção longa."
+    "equipment": "Halter",
+    "description": "Isola o bíceps com foco na contração."
   },
   {
     "_id": "triceps_pulley_triceps",
@@ -117,15 +197,23 @@
     "muscleGroup": "Tríceps",
     "type": "Força",
     "equipment": "Cabo",
-    "description": "Movimento controlado para máxima contração do tríceps."
+    "description": "Foco na extensão do cotovelo com controle de carga."
   },
   {
-    "_id": "prancha_core",
-    "name": "Prancha",
-    "muscleGroup": "Core",
-    "type": "Resistência",
+    "_id": "triceps_testa_com_barra_triceps",
+    "name": "Tríceps Testa com Barra",
+    "muscleGroup": "Tríceps",
+    "type": "Força",
+    "equipment": "Barra",
+    "description": "Isola o tríceps com foco na porção longa."
+  },
+  {
+    "_id": "mergulho_banco_triceps",
+    "name": "Mergulho entre Bancos",
+    "muscleGroup": "Tríceps",
+    "type": "Força",
     "equipment": "Peso corporal",
-    "description": "Isometria intensa para abdômen, lombar e postura."
+    "description": "Movimento eficaz para ativação do tríceps com peso do corpo."
   },
   {
     "_id": "abdominal_crunch_abdomen",
@@ -136,12 +224,148 @@
     "description": "Movimento básico focado no reto abdominal."
   },
   {
+    "_id": "prancha_core",
+    "name": "Prancha",
+    "muscleGroup": "Core",
+    "type": "Resistência",
+    "equipment": "Peso corporal",
+    "description": "Isometria para ativação do abdômen, lombar e estabilizadores."
+  },
+  {
+    "_id": "subida_no_banco_com_halteres_pernas",
+    "name": "Subida no Banco com Halteres",
+    "muscleGroup": "Pernas",
+    "type": "Força",
+    "equipment": "Halteres",
+    "description": "Fortalece glúteos e quadríceps com movimento funcional unilateral."
+  },
+  {
+    "_id": "afundo_bulgaro_pernas",
+    "name": "Afundo Búlgaro",
+    "muscleGroup": "Pernas",
+    "type": "Força",
+    "equipment": "Banco e Halteres",
+    "description": "Exercício unilateral intenso que ativa quadríceps, glúteos e core."
+  },
+  {
+    "_id": "gluteo_na_polia_gluteos",
+    "name": "Glúteo na Polia",
+    "muscleGroup": "Glúteos",
+    "type": "Força",
+    "equipment": "Cabo",
+    "description": "Isola os glúteos com movimento de extensão de quadril."
+  },
+  {
+    "_id": "kickback_com_halter_gluteos",
+    "name": "Kickback com Halter",
+    "muscleGroup": "Glúteos",
+    "type": "Força",
+    "equipment": "Halter",
+    "description": "Movimento unilateral para glúteo máximo com controle e estabilidade."
+  },
+  {
+    "_id": "crucifixo_na_maquina_peito",
+    "name": "Crucifixo na Máquina",
+    "muscleGroup": "Peito",
+    "type": "Força",
+    "equipment": "Máquina",
+    "description": "Trabalha peitoral com controle de amplitude e sem sobrecarga articular."
+  },
+  {
+    "_id": "voador_peitoral_maquina_peito",
+    "name": "Voador Peitoral",
+    "muscleGroup": "Peito",
+    "type": "Força",
+    "equipment": "Máquina",
+    "description": "Enfatiza a contração do peitoral com estabilidade e isolamento."
+  },
+  {
+    "_id": "rosca_scott_maquina_biceps",
+    "name": "Rosca Scott na Máquina",
+    "muscleGroup": "Bíceps",
+    "type": "Força",
+    "equipment": "Máquina",
+    "description": "Isola o bíceps com suporte para antebraços e controle total."
+  },
+  {
+    "_id": "rosca_inversa_barra_biceps",
+    "name": "Rosca Inversa com Barra",
+    "muscleGroup": "Bíceps",
+    "type": "Força",
+    "equipment": "Barra",
+    "description": "Trabalha braquial e antebraço com pegada pronada."
+  },
+  {
+    "_id": "triceps_coice_com_halter_triceps",
+    "name": "Tríceps Coice com Halter",
+    "muscleGroup": "Tríceps",
+    "type": "Força",
+    "equipment": "Halter",
+    "description": "Foca na extensão completa do cotovelo com controle e estabilidade."
+  },
+  {
+    "_id": "triceps_frances_com_halter_triceps",
+    "name": "Tríceps Francês com Halter",
+    "muscleGroup": "Tríceps",
+    "type": "Força",
+    "equipment": "Halter",
+    "description": "Trabalha a porção longa do tríceps com amplitude vertical."
+  },
+  {
+    "_id": "remada_baixa_na_polia_costas",
+    "name": "Remada Baixa na Polia",
+    "muscleGroup": "Costas",
+    "type": "Força",
+    "equipment": "Cabo",
+    "description": "Ativa dorsais e romboides com controle de tronco e postura."
+  },
+  {
+    "_id": "encolhimento_com_halteres_trapezio",
+    "name": "Encolhimento com Halteres",
+    "muscleGroup": "Trapézio",
+    "type": "Força",
+    "equipment": "Halteres",
+    "description": "Fortalece o trapézio com movimento simples de elevação dos ombros."
+  },
+  {
+    "_id": "encolhimento_na_maquina_trapezio",
+    "name": "Encolhimento na Máquina",
+    "muscleGroup": "Trapézio",
+    "type": "Força",
+    "equipment": "Máquina",
+    "description": "Trabalha trapézio com maior estabilidade e segurança."
+  },
+  {
+    "_id": "twist_russo_abdomen",
+    "name": "Twist Russo",
+    "muscleGroup": "Abdômen",
+    "type": "Força",
+    "equipment": "Peso corporal ou Halter",
+    "description": "Fortalece oblíquos e melhora a rotação de tronco."
+  },
+  {
+    "_id": "prancha_lateral_core",
+    "name": "Prancha Lateral",
+    "muscleGroup": "Core",
+    "type": "Resistência",
+    "equipment": "Peso corporal",
+    "description": "Isometria para oblíquos e estabilização lateral do tronco."
+  },
+  {
+    "_id": "abdominal_na_maquina_abdomen",
+    "name": "Abdominal na Máquina",
+    "muscleGroup": "Abdômen",
+    "type": "Força",
+    "equipment": "Máquina",
+    "description": "Foca no reto abdominal com resistência ajustável."
+  },
+  {
     "_id": "corrida_na_esteira_cardiorrespiratorio",
     "name": "Corrida na Esteira",
     "muscleGroup": "Cardiorrespiratório",
     "type": "Cardio",
     "equipment": "Esteira",
-    "description": "Melhora capacidade cardiovascular e queima calórica."
+    "description": "Melhora condicionamento cardiovascular e queima calórica."
   },
   {
     "_id": "bicicleta_ergometrica_cardiorrespiratorio",
@@ -149,14 +373,23 @@
     "muscleGroup": "Cardiorrespiratório",
     "type": "Cardio",
     "equipment": "Bicicleta",
-    "description": "Treino de baixo impacto com alta queima de calorias."
+    "description": "Cardio de baixo impacto ideal para resistência e recuperação."
   },
   {
-    "_id": "escada_simuladora_pernas",
+    "_id": "escada_simuladora_cardiorrespiratorio",
     "name": "Escada Simuladora",
-    "muscleGroup": "Pernas",
+    "muscleGroup": "Cardiorrespiratório",
     "type": "Cardio",
     "equipment": "Máquina",
-    "description": "Desafia resistência das pernas com foco cardiovascular."
+    "description": "Eleva a frequência cardíaca enquanto trabalha pernas e glúteos."
+  },
+  {
+    "_id": "polichinelo_cardiorrespiratorio",
+    "name": "Polichinelo",
+    "muscleGroup": "Cardiorrespiratório",
+    "type": "Cardio",
+    "equipment": "Peso corporal",
+    "description": "Exercício aeróbico simples para ativar todo o corpo e aquecer."
   }
 ]
+
