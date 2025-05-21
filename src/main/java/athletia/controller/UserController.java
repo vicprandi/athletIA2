@@ -1,11 +1,9 @@
 package athletia.controller;
 
 import athletia.model.request.UserProfileUpdateRequest;
-import athletia.model.request.UserRequest;
 import athletia.model.response.UserResponse;
 import athletia.service.UserService;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Component
 public class UserController {
