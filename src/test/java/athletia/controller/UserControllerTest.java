@@ -4,6 +4,7 @@ import athletia.config.security.authentication.JwtService;
 import athletia.entrypoint.UserEntrypoint;
 import athletia.model.request.UserProfileUpdateRequest;
 import athletia.model.response.UserResponse;
+import athletia.service.CustomUserDetailsService;
 import athletia.util.Gender;
 import athletia.util.Goal;
 import athletia.util.TrainingLevel;
@@ -42,6 +43,9 @@ class UserControllerTest {
 
     @MockBean
     private UserController controller;
+
+    @MockBean
+    private CustomUserDetailsService customUserDetailsService;
 
     private String updateProfileJson;
     private UserResponse expectedResponse;

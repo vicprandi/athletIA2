@@ -4,6 +4,7 @@ import athletia.config.security.authentication.JwtService;
 import athletia.entrypoint.WorkoutPlanEntrypoint;
 import athletia.model.request.WorkoutPlanRequest;
 import athletia.model.response.WorkoutPlanResponse;
+import athletia.service.CustomUserDetailsService;
 import athletia.util.Goal;
 import athletia.util.TrainingLevel;
 import org.junit.jupiter.api.BeforeEach;
@@ -39,6 +40,9 @@ class WorkoutPlanControllerTest {
 
     @MockBean
     private WorkoutPlanController controller;
+
+    @MockBean
+    private CustomUserDetailsService customUserDetailsService;
 
     private String validPlanJson;
     private WorkoutPlanResponse expectedResponse;
