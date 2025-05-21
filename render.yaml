@@ -5,6 +5,7 @@ services:
     buildCommand: ./mvnw clean package -DskipTests
     envVars:
       - key: SPRING_DATA_MONGODB_URI
+        value: mongodb+srv://vicprandi:MW6YeUyffOGarsyJ@athletia-cluster.al66ds1.mongodb.net/?retryWrites=true&w=majority&appName=athletia-cluster
         sync: false
       - key: JAVA_VERSION
         value: 21
