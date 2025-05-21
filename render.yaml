@@ -1,7 +1,7 @@
 services:
   - type: web
     name: athletIA2
-    env: java
+    env: docker
     buildCommand: ./mvnw clean package -DskipTests
     startCommand: java -jar target/backend-0.0.1-SNAPSHOT.jar
     envVars:
