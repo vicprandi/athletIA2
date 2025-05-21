@@ -4,7 +4,6 @@ import athletia.model.request.SignupRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin("*")
 @RestController
 @RequestMapping("/auth")
 public class AuthEntrypoint {
