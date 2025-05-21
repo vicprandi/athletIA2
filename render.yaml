@@ -3,9 +3,9 @@ services:
     name: athletIA2
     env: docker
     buildCommand: ./mvnw clean package -DskipTests
-envVars:
-  - key: SPRING_DATA_MONGODB_URI
-    value: mongodb+srv://vicprandi:MW6YeUyffOGarsyJ@athletia-cluster.al66ds1.mongodb.net/?retryWrites=true&w=majority&appName=athletia-cluster
-  - key: JAVA_VERSION
-    value: 21
-
+    startCommand: java -jar target/backend-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: SPRING_DATA_MONGODB_URI
+        value: mongodb+srv://vicprandi:MW6YeUyffOGarsyJ@athletia-cluster.al66ds1.mongodb.net/?retryWrites=true&w=majority&appName=athletia-cluster
+      - key: JAVA_VERSION
+        value: 21
